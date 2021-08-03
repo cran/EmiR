@@ -13,41 +13,30 @@
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
 
-library(EmiR)
 
-ob <- function(x) {
-  0.6224*(x[1]*0.0625)*x[3]*x[4] + 1.7781*(x[2]*0.0625)*x[3]^2 + 3.1611*(x[1]*0.0625)^2*x[4] + 19.8621*(x[1]*0.0625)^2*x[3]
-}
+test_that("Griewank function minimum", {
+  ### 1D
+  expect_equal(griewank_func(3.45), 1.955794, tolerance = 1e-5)
+  expect_equal(griewank_func(c(3.45)), 1.955794, tolerance = 1e-5)
+  expect_equal(griewank_func(list(3.45)), 1.955794, tolerance = 1e-5)
 
-g1 <- function(x){
-  0.0193*x[3] - (x[1]*0.0625)
-}
-g2 <- function(x){
-  0.00954*x[3] - (x[2]*0.0625)
-}
+  ### 2D
+  expect_equal(griewank_func(c(3.45, -28.48)), 1.470856, tolerance = 1e-5)
+  expect_equal(griewank_func(list(3.45, -28.48)), 1.470856, tolerance = 1e-5)
 
-g3 <- function(x){
-  1296000 - pi * x[3]^2 * x[4] - 4/3 * pi * x[3]^3
-}
+  ### 10 D
+  expect_equal(griewank_func(rep(-2.903534, 10)), 1.021123, tolerance = 1e-5)
+})
 
-c1 <- constraint(g1, "<=")
-c2 <- constraint(g2, "<=")
-c3 <- constraint(g3, "<=")
+test_that("Griewank error", {
+  ### No arguments
+  expect_error(griewank_func())
+  expect_error(griewank_func(c()))
+  expect_error(griewank_func(list()))
 
-p1 <- parameter("x1", 18, 32, integer = TRUE)
-p2 <- parameter("x2", 10, 32, integer = TRUE)
-p3 <- parameter("x3", 10, 240)
-p4 <- parameter("x4", 10, 240)
+  ### Non numeric argument
+  expect_error(griewank_func(c("0", 0)))
 
-conf <- config_algo(algorithm_id = "BAT", population_size = 500, iterations = 7000)
-results <- minimize(algorithm_id = "BAT",
-                   obj_func = ob,
-                   config = conf,
-                   parameters = list(p1,p2, p3, p4),
-                   constraints = list(c1,c2,c3),
-                   save_pop_history = TRUE,
-                   constrained_method = "BARRIER",
-                   constr_init_pop = TRUE,
-                   oob_solutions = "RBC",
-                   seed = 1)
-print(results)
+  ### Multiple arguments
+  expect_error(griewank_func(0, 0, 0))
+})

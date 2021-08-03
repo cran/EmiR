@@ -13,41 +13,26 @@
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
 
-library(EmiR)
 
-ob <- function(x) {
-  0.6224*(x[1]*0.0625)*x[3]*x[4] + 1.7781*(x[2]*0.0625)*x[3]^2 + 3.1611*(x[1]*0.0625)^2*x[4] + 19.8621*(x[1]*0.0625)^2*x[3]
-}
+test_that("Colville function minimum", {
+  ### 4D
+  expect_equal(colville_func(c(1,2,3,4)), 2514.4, tolerance = 1e-1)
+  expect_equal(colville_func(list(1,2,3,4)), 2514.4, tolerance = 1e-1)
+})
 
-g1 <- function(x){
-  0.0193*x[3] - (x[1]*0.0625)
-}
-g2 <- function(x){
-  0.00954*x[3] - (x[2]*0.0625)
-}
+test_that("Colville error", {
+  ### No arguments
+  expect_error(colville_func())
+  expect_error(colville_func(c()))
+  expect_error(colville_func(list()))
 
-g3 <- function(x){
-  1296000 - pi * x[3]^2 * x[4] - 4/3 * pi * x[3]^3
-}
+  ### Number of arguments different from 4
+  expect_error(colville_func(c(1,2,3)))
+  expect_error(colville_func(list(2,3)))
 
-c1 <- constraint(g1, "<=")
-c2 <- constraint(g2, "<=")
-c3 <- constraint(g3, "<=")
+  ### Non numeric argument
+  expect_error(colville_func(c("0", 0)))
 
-p1 <- parameter("x1", 18, 32, integer = TRUE)
-p2 <- parameter("x2", 10, 32, integer = TRUE)
-p3 <- parameter("x3", 10, 240)
-p4 <- parameter("x4", 10, 240)
-
-conf <- config_algo(algorithm_id = "BAT", population_size = 500, iterations = 7000)
-results <- minimize(algorithm_id = "BAT",
-                   obj_func = ob,
-                   config = conf,
-                   parameters = list(p1,p2, p3, p4),
-                   constraints = list(c1,c2,c3),
-                   save_pop_history = TRUE,
-                   constrained_method = "BARRIER",
-                   constr_init_pop = TRUE,
-                   oob_solutions = "RBC",
-                   seed = 1)
-print(results)
+  ### Multiple arguments
+  expect_error(colville_func(0, 0, 0))
+})

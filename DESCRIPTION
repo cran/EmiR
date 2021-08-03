@@ -1,7 +1,7 @@
 Package: EmiR
 Type: Package
 Title: Evolutionary Minimizer for R
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(
     person("Davide", "Pagano", email = "davide.pagano@unibs.it", role = c("aut","cre")),
     person("Lorenzo", "Sostero", email = "l.sostero@studenti.unibs.it", role = "aut"))
@@ -34,6 +34,6 @@ RdMacros: Rdpack, mathjaxr
 SystemRequirements: C++11
 Suggests: xml2, testthat
 NeedsCompilation: yes
-Packaged: 2021-08-02 08:00:48 UTC; davidepagano
+Packaged: 2021-08-03 17:45:35 UTC; davidepagano
 Repository: CRAN
-Date/Publication: 2021-08-03 09:50:10 UTC
+Date/Publication: 2021-08-03 23:40:07 UTC
