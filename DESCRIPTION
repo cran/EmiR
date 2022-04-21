@@ -1,13 +1,13 @@
 Package: EmiR
 Type: Package
 Title: Evolutionary Minimizer for R
-Version: 1.0.1
+Version: 1.0.3
 Authors@R: c(
-    person("Davide", "Pagano", email = "davide.pagano@unibs.it", role = c("aut","cre")),
-    person("Lorenzo", "Sostero", email = "l.sostero@studenti.unibs.it", role = "aut"))
-Author: Davide Pagano [aut, cre],
-  Lorenzo Sostero [aut]
-Maintainer: Davide Pagano <davide.pagano@unibs.it>
+    person("Davide", "Pagano", email = "davide.pagano@unibs.it", role = "aut"),
+    person("Lorenzo", "Sostero", email = "l.sostero@studenti.unibs.it", role = c("aut","cre")))
+Author: Davide Pagano [aut],
+  Lorenzo Sostero [aut, cre]
+Maintainer: Lorenzo Sostero <l.sostero@studenti.unibs.it>
 Description: A C++ implementation of the following evolutionary 
     algorithms: Bat Algorithm (Yang, 2010 <doi:10.1007/978-3-642-12538-6_6>),
     Cuckoo Search (Yang, 2009 <doi:10.1109/nabic.2009.5393690>),
@@ -27,13 +27,13 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports: Rcpp (>= 1.0.5), methods, Rdpack, tictoc, ggplot2, tibble,
-        tidyr, dplyr, gganimate, mathjaxr, data.table, plot3D
+        tidyr, dplyr, gganimate, mathjaxr, data.table, plot3D, graphics
 LinkingTo: Rcpp, RcppProgress, testthat
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 RdMacros: Rdpack, mathjaxr
 SystemRequirements: C++11
 Suggests: xml2, testthat
 NeedsCompilation: yes
-Packaged: 2021-08-03 17:45:35 UTC; davidepagano
+Packaged: 2022-04-20 18:37:42 UTC; lorenzo
 Repository: CRAN
-Date/Publication: 2021-08-03 23:40:07 UTC
+Date/Publication: 2022-04-21 13:10:05 UTC
