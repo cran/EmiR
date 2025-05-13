@@ -1,7 +1,7 @@
 /*
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -124,6 +124,11 @@ void Algorithm::setMaxPenaltyCoeff(double t) {
 
 void Algorithm::setCostrInitPop(bool t) {
   m_search_space.setCostrInitPop(t);
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+void Algorithm::setGeneratorFunction(Function t) {
+  m_search_space.setGeneratorFunction(t);
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 

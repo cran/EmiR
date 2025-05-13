@@ -1,6 +1,6 @@
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -25,6 +25,7 @@ c2 <- constraint(g2, "<=")
 
 p1 <- parameter("x1", 13, 100)
 p2 <- parameter("x2", 0, 100)
+
 
 conf <- config_algo(algorithm_id = "PS", population_size = 200, iterations = 10000)
 results <- minimize(algorithm_id = "PS",

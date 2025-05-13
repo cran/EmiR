@@ -1,6 +1,6 @@
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -12,7 +12,6 @@
 # or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License    #
 # for more details: <https://www.gnu.org/licenses/>.                          #
 ###############################################################################
-
 
 utils::globalVariables(c("V1", "V2", "V3", "value"))
 
@@ -66,7 +65,7 @@ plot_population <- function(minimizer_result, iteration, n_points = 100) {
   if (length(minimizer_result@pop_history) < 1) stop("Population history was not saved.")
 
   # check on number of parameters
-  if (n_par > 3 || n_par < 1) stop("Only 1D and 2D functions are supported.")
+  if (n_par > 2 || n_par < 1) stop("Only 1D and 2D functions are supported.")
 
   df <- as.data.frame(do.call(rbind, minimizer_result@pop_history[[iteration]]))
 
@@ -91,7 +90,7 @@ plot_population <- function(minimizer_result, iteration, n_points = 100) {
       ggplot2::ylab(paste0("f(", minimizer_result@parameter_names[1], ")"))
     return(p)
 
-  } else if (n_par == 2) {
+  } else {
 
     obf_df <- df_from_func2D(n_points, minimizer_result@parameter_range[[1]][1], minimizer_result@parameter_range[[1]][2],
                              minimizer_result@parameter_range[[2]][1], minimizer_result@parameter_range[[2]][2], minimizer_result@obj_function)
@@ -121,15 +120,7 @@ plot_population <- function(minimizer_result, iteration, n_points = 100) {
       ggplot2::ylab(minimizer_result@parameter_names[2])
     return(p)
 
-  } else {
-
-    plot3D::scatter3D(df$V1, df$V2, df$V3, colvar = NULL, col = "blue", pch = 16, phi = 0,
-                      ticktype = "detailed", xlab = minimizer_result@parameter_names[1],
-                      ylab = minimizer_result@parameter_names[2], zlab = minimizer_result@parameter_names[3],
-                      main = paste0("Iteration #", iteration))
-
   }
-
 }
 
 

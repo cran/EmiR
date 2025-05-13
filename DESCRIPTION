@@ -1,7 +1,7 @@
 Package: EmiR
 Type: Package
 Title: Evolutionary Minimizer for R
-Version: 1.0.4
+Version: 1.0.5
 Authors@R: c(
     person("Davide", "Pagano", email = "davide.pagano@unibs.it", role = "aut"),
     person("Lorenzo", "Sostero", email = "l.sostero@studenti.unibs.it", role = c("aut","cre")))
@@ -27,13 +27,12 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports: Rcpp (>= 1.0.5), methods, Rdpack, tictoc, ggplot2, tibble,
-        tidyr, dplyr, gganimate, mathjaxr, data.table, plot3D, graphics
-LinkingTo: Rcpp, RcppProgress
+        tidyr, dplyr, gganimate, mathjaxr, data.table, graphics
+LinkingTo: Rcpp, RcppProgress, testthat
 RoxygenNote: 7.1.2
 RdMacros: Rdpack, mathjaxr
-SystemRequirements: C++11
-Suggests: xml2
+Suggests: xml2, testthat
 NeedsCompilation: yes
-Packaged: 2022-12-09 16:49:57 UTC; Lorenzo
+Packaged: 2025-05-13 18:14:02 UTC; Lorenzo
 Repository: CRAN
-Date/Publication: 2022-12-09 17:30:01 UTC
+Date/Publication: 2025-05-13 18:40:02 UTC

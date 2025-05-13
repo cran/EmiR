@@ -1,6 +1,6 @@
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -84,7 +84,7 @@ list_of_functions <- function() {
 #' @param config an object with the configuration parameters of the chosen algorithm. For each
 #' algorithm there is different function for the tuning of its configuration parameter, as
 #' reported in the following list:
-#' \itemize{
+#' \describe{
 #'  \item{\link[EmiR]{config_abc}}{ -- configuration function for the *Artificial Bee Colony Algorithm*.}
 #'  \item{\link[EmiR]{config_bat}}{ -- configuration function for the *Bat Algorithm*.}
 #'  \item{\link[EmiR]{config_cs} }{ -- configuration function for the *Cuckoo Search Algorithm*.}

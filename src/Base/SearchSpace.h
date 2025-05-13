@@ -1,7 +1,7 @@
 /*
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -57,6 +57,9 @@ public:
    /// Access the specified parameter
    Parameter &operator[](std::size_t t) { return m_par[t]; };
 
+   /// Set the generator function
+   void setGeneratorFunction(Function);
+
    /// Return a random number in [0, 1]
    double rand();
 
@@ -68,6 +71,8 @@ private:
    List                   m_constraints;
    std::vector<double>    m_gen_point;
    bool                   m_constr_init_pop;
+   bool                   m_custom_generator_func;
+   Function               m_generator_func;
 };
 
 #endif

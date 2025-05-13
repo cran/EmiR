@@ -1,7 +1,7 @@
 /*
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -36,6 +36,8 @@ S4 cpp_minimize_mfo(Function obj_function,
   std::string oob_method = opt.slot("oob_solutions");
   auto seed = opt.slot("seed");
   NumericMatrix initial_population = opt.slot("initial_population");
+  Function generation_function = opt.slot("generation_function");
+  bool use_generation_func = opt.slot("use_generation_func");
 
   MFO_algorithm mfo(obj_function, config);
   mfo.setConstraints(constraints);
@@ -52,6 +54,7 @@ S4 cpp_minimize_mfo(Function obj_function,
   mfo.setSeed(seed);
   mfo.setInitialPopulation(initial_population);
   mfo.setAlgoName("MFO");
+  if (use_generation_func) mfo.setGeneratorFunction(generation_function);
   mfo.minimize();
   return mfo.getResults();
 }

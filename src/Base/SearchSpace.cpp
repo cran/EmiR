@@ -1,7 +1,7 @@
 /*
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -19,11 +19,11 @@
 #include "SearchSpace.h"
 #include <iostream>
 
-SearchSpace::SearchSpace() : m_par(0), m_constr_init_pop(false) {}
+SearchSpace::SearchSpace() : m_par(0), m_constr_init_pop(false), m_custom_generator_func(false), m_generator_func("norm") {}
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
-SearchSpace::SearchSpace(int n) : m_par(n), m_gen_point(n), m_constr_init_pop(false) {}
+SearchSpace::SearchSpace(int n) : m_par(n), m_gen_point(n), m_constr_init_pop(false), m_custom_generator_func(false), m_generator_func("norm") {}
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
@@ -94,14 +94,19 @@ bool SearchSpace::ckeckConstraint() {
 
 
 double SearchSpace::getRandom(std::size_t i) {
-  double value = m_random.rand(m_par[i].getMin(), m_par[i].getMax());;
+  double value = m_random.rand(m_par[i].getMin(), m_par[i].getMax());
   return value;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 
 
 std::vector<double> SearchSpace::getRandom() {
-  for (std::size_t i = 0; i < m_gen_point.size(); ++i) m_gen_point[i] = getRandom(i);
+  if (m_custom_generator_func) {
+    NumericVector v = m_generator_func();
+    m_gen_point = Rcpp::as<std::vector<double> >(v);
+  } else{
+    for (std::size_t i = 0; i < m_gen_point.size(); ++i) m_gen_point[i] = getRandom(i);
+  }
 
   // in case of a constrained optimization, check is
   // the solution violates any constraint
@@ -110,6 +115,13 @@ std::vector<double> SearchSpace::getRandom() {
   }
 
   return m_gen_point;
+}
+//_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+
+
+void SearchSpace::setGeneratorFunction(Function generator_func) {
+  m_custom_generator_func = true;
+  m_generator_func = generator_func;
 }
 //_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 

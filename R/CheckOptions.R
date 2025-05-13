@@ -1,6 +1,6 @@
 ###############################################################################
 # Emir: EmiR: Evolutionary minimization forR                                  #
-# Copyright (C) 2021 Davide Pagano & Lorenzo Sostero                          #
+# Copyright (C) 2021-2024 Davide Pagano & Lorenzo Sostero                     #
 #                                                                             #
 # This program is free software: you can redistribute it and/or modify        #
 # it under the terms of the GNU General Public License as published by        #
@@ -135,6 +135,17 @@ checkMinimizationOptions <- function(constraints, p_size, d_size, ...) {
     }
     opt@initial_population = tmp
     opt_list <- opt_list[!opt_list %in% "initial_population"]
+  }
+
+  if ("generation_function" %in% opt_list) {
+    tmp = minimizer_options[["generation_function"]]
+    # check if is a function
+    if (is.function(tmp) == FALSE || length(tmp) > 1) {
+      stop("Option 'generation_function' only accepts a function.\n")
+    }
+    opt@use_generation_func = TRUE
+    opt@generation_function = tmp
+    opt_list <- opt_list[!opt_list %in% "generation_function"]
   }
 
   if (length(opt_list) > 0) {
