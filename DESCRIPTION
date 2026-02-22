@@ -1,7 +1,7 @@
 Package: EmiR
 Type: Package
 Title: Evolutionary Minimizer for R
-Version: 1.0.5
+Version: 1.0.6
 Authors@R: c(
     person("Davide", "Pagano", email = "davide.pagano@unibs.it", role = "aut"),
     person("Lorenzo", "Sostero", email = "l.sostero@studenti.unibs.it", role = c("aut","cre")))
@@ -33,6 +33,6 @@ RoxygenNote: 7.1.2
 RdMacros: Rdpack, mathjaxr
 Suggests: xml2, testthat
 NeedsCompilation: yes
-Packaged: 2025-05-13 18:14:02 UTC; Lorenzo
+Packaged: 2026-02-22 20:56:29 UTC; Lorenzo
 Repository: CRAN
-Date/Publication: 2025-05-13 18:40:02 UTC
+Date/Publication: 2026-02-22 21:20:02 UTC

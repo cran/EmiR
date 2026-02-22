@@ -1,5 +1,5 @@
-a25737771fe5bb13a5ff6485967f3fd8 *DESCRIPTION
-4f37eca36f0dc5f65ab7fbf1295853ef *NAMESPACE
+d91e5745d2c669b73471562749a08df7 *DESCRIPTION
+d409f605407b87de0ecb7d701d6746d6 *NAMESPACE
 7e740b6ffd6a4fdfec8e51217443fa8d *R/AAA_CREATE_MAKEVARS.R
 5046c95559b7bc71f284534085f9ab78 *R/ALGO__ABC.R
 5e07c9a7e00dfdc863024ea1a7f28474 *R/ALGO__BAT.R
@@ -36,6 +36,7 @@ c80d4ee5d131891d267171d2c6a2fcef *R/CheckOptions.R
 986d042ba8d768e62657fc3c18c1013d *R/EmiR.R
 7b0446a54ff064dcc261aaae9d7e2a01 *R/FUNC__Ackley.R
 054a254daefba5a100f018267f77a4da *R/FUNC__Bohachevsky.R
+9575703ffd08e94b8bb6eb8de5ea3054 *R/FUNC__Colville.R
 e8f1c9f50890a3a485e930810a409846 *R/FUNC__Freudenstein.R
 ebe2a856b5c3022cd6b3ffa2580455c8 *R/FUNC__Griewank.R
 336f124c0ef66e6716f9f5a767a89af3 *R/FUNC__Miele.R
@@ -52,8 +53,8 @@ e13d371f0234fcfd17dd80779907e3a0 *R/FUNC__Styblinski-Tang.R
 4154dbf9a191e65977fca42c2840baaa *R/RcppExports.R
 de97167fcc2c4b7074fef025ad781688 *R/catch-routine-registration.R
 2abe87331f9e3ff084f8b7deccf93b9e *README.md
-669d4cafff3a8ef3148b4120dfa36c12 *build/partial.rdb
-d918202ac70f4c456195931fbd0c8606 *build/stage23.rdb
+1bccbece3065e539bfaecbe45b402743 *build/partial.rdb
+39f38c818bc3480c71ff73874e80d602 *build/stage23.rdb
 4bd9922da1a8363da07f65cdc74af377 *data/G01InitPop.RData
 d412f698923c644930465fe4edce1765 *demo/00Index
 9abcd2f6123241664d8f511265cc0b19 *demo/G06_constr_benchmark.R
@@ -67,6 +68,7 @@ e6cf14e92aa19f5d2b500b622080b886 *man/OptimizationResults.Rd
 e49a69abd7af27b91e62a1cd28e682c7 *man/ackley_func.Rd
 210b06afdd75554555dc33a029f005e7 *man/animate_population.Rd
 4b92f93842da115905e561b1e82c20c3 *man/bohachevsky_func.Rd
+e669f76f4df149c16eee6d26dd23b7da *man/colville_func.Rd
 b7505e54076113eacc14354e0a95e8cd *man/config_abc.Rd
 8232e8eebc7855348c52472063683a6a *man/config_algo.Rd
 f95472999824741eb661f111c9bb176a *man/config_bat.Rd
@@ -224,6 +226,7 @@ c2cb0c30e10da611f9fbe56aea52f7a9 *src/test-runner.cpp
 dcc5f7bdb95017466bf061782d9152bf *tests/testthat.R
 299a000b9b484f8a84557bc22328992c *tests/testthat/test-ackley.R
 f94e5e151761995d451f862bee0362d8 *tests/testthat/test-checkParameters.R
+ae6e4c481a813a1bece85cf6ba3d260d *tests/testthat/test-colville.R
 dc5348c6bde31561926db5b92e6ea286 *tests/testthat/test-griewank.R
 ecb8f7b39b8603da3ab5149bee3f0bf0 *tests/testthat/test-rastrigin.R
 3e9a1e21fde37d58962ed4f7a86631fe *tests/testthat/test-rosenbrock.R
